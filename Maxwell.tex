@@ -1,0 +1,200 @@
+Consider a region \(M \subset \R^3\) bounded by a smooth \emph{perfect conductor} \(\de M\), having outer unit normal \(\nu \colon \de M \to \R^3\). The static Maxwell equations in vacuum are
+\begin{align*}
+    \curl \mathbf{E} &= 0 && \text{(Faraday)}\\
+    \dive \mathbf{E} &= \frac{\rho}{\eps_0} & &\text{(Gauss)}\\
+    \dive \mathbf{B} &= 0 && \text{(no magnetic charges)}\\
+    \curl \mathbf{B} &= \mu_0\mathbf{j} && \text{(Ampère)}
+\end{align*}
+with boundary conditions
+\begin{equation}\label{eq: BC vectors}
+    \mathbf{E} \times \nu = 0, \qquad \mathbf{B} \cdot \nu = 0  \qquad \text{on }\de M.
+\end{equation}
+where the electric field \(\mathbf{E} \colon M \to \R^3\) and the magnetic field \(\mathbf{B} \colon M \to \R^3\) are the unknowns, while the charge density \(\rho \in C^\infty_c(M)\), the current density \(\mathbf{j} \in C^\infty_c(M;\R^3)\), and the electric and magnetic permittivity constants in vacuum \(\eps_0,\mu_0 >0\) (that from now on we assume to be equal to 1, after having chosen a suitable unit system) are the data.
+
+If we consider the differential forms
+\begin{align*}
+        E &\coloneq E_1 \dif x^1 + E_2 \dif x^2 + E_3 \dif x^3,\\
+        B &\coloneq B_1 \dif x^2 \wedge \dif x^3 - B_2 \dif x^2 \wedge \dif x^3 + B_3 \dif x^1 \wedge \dif x^2\\
+        J &\coloneq j_1 \dif x^1 + j_2 \dif x^2 + j_3 \dif x^3 
+\end{align*}
+a simple computation shows that the Maxwell equations become
+\begin{align}
+    \dif E = 0 && \delta E = \rho \\
+    \dif B = 0 && \delta B = J
+\end{align}
+with boundary conditions
+\begin{equation}\label{eq: BC forms}
+    E|_{\de M} = 0, \qquad B|_{\de M} = 0.
+\end{equation}
+In fact, if we consider the simple case where \(\de M \approx \{x^3=0\}\) and \(M \approx \{x^3<0\}\), so that \(\nu \approx e_3\), then the boundary conditions \eqref{eq: BC vectors} become
+\[
+    E_1=E_2= 0, \qquad B_3=0.
+\]
+On the other hand,
+\[
+    E|_{\de M} = E_1 \dif x^2 + E_2 \dif x^2, \qquad B|_{\de M} = B_3 \dif x^1 \wedge \dif x^2,
+\]
+so the two sets of boundary conditions coincide.
+
+Now we apply the results of the previous section to analyze topologically the system of Maxwell equations.
+By Theorem~\ref{thm: Hodge with BC}, since \(E\) and \(B\) are closed
+\[
+    E = \alpha + \dif \phi, \qquad B = \beta + \dif A
+\]
+where \(\alpha \in \Hcal^1_D, \beta \in \Hcal^2_D\) and \(\phi \in \Omega^0_D, A \in \Omega^1_D\). Actually, we can assume that \(\phi\) and \(A\) are co-closed. In fact, \(\phi\) is a 0-form, so it's trivially co-closed. To fix \(A\), do a gauge transform \(A'=A+\dif \psi\), for some \(\psi \in \Omega^0_D\), so that \(\dif A'=\dif A\) and \(A' \in \Omega^1_D\). Then,
+\[
+    \delta A' = \delta A + \triangle \psi,
+\]
+so we need to solve the equation 
+\[
+    \triangle \psi = - \delta A
+\]
+with Dirichlet boundary conditions. Since \(\delta A \in (\Hcal^0_D)^\perp\), this problem have a unique solution, and we can replace \(A\) with the co-closed form \(A'\).
+
+Now, using the inhomogeneous Maxwell equations and the co-closedness of \(\phi\) and \(A\),
+\[
+    \triangle\phi =  \rho, \qquad \triangle A =  J.
+\]
+Thus, solution to the Maxwell equations exist if and only if \(\rho \in (\Hcal^0_D)^\perp\) and \(J \in (\Hcal^1_D)^\perp\), i.e.,
+\[
+    \int_M \rho \vp = 0 \qquad \qquad \forall \vp \in \Hcal^0_D
+\]
+and
+\[
+    \int_M \alpha \wedge \star J = 0 \qquad \qquad \forall \alpha \in \Hcal^1_D.
+\]
+
+In our case, since \(M \subset \R^3\) is a bounded domain, by the usual elliptic theory the only solution of the boundary value problem
+\begin{align*}
+    \Delta u &= 0 \qquad \text{ on }M\\
+    u &= 0  \qquad \text{ on } \de M
+\end{align*}
+is \(u=0\), so
+\[
+    \Hcal^0_D(M) = 0.
+\]
+This means that there are no conditions on the charge density.
+
+Moreover, by Theorem~\ref{thm: Hodge - de Rham with Dirichlet BC}, \(\alpha\) and \(\beta\) determine the cohomology class relative to the boundary of the electric and the magnetic field, respectively.
+
+Therefore, since it is the reason of the existence of non trivial harmonic forms, the presence of topology forces
+\begin{itemize}
+    \item compatibility conditions on the data
+    \item non uniqueness of the solution to the boundary value problems.
+\end{itemize}
+
+In the rest of this section, I will examine a few examples. To make the interpretation easier, we will use the following deep theorem that relates the cohomology relative to the boundary \(H^k_{dR}(M,\de M)\) with the singular homology with real coefficients \(H_k(M;\R)\) (see \cite[Theorem~3.43]{HatcherAlgebraic_2000}).
+\begin{thm}[Poincaré-Lefschetz duality]\label{thm: Poincaré-Lefscetz duality}
+    Let \(M\) be a compact\footnote{In particular, it is a manifold of finite type, so cohomology and homology groups (with real coefficients) are finite dimensional vector spaces.} \(n\)-manifold with boundary \(\de M\). Then the map
+    \begin{align*}
+        H^k_{dR}(M,\de M) \times H^{n-k}_{dR}(M) &\to \R \\
+        ([\omega], [\eta]) \mapsto \int_M \omega\wedge \eta
+    \end{align*}
+    is a well defined non degenerate pairing. In other words, by de Rham theorem\footnote{The de Rham theorem states that the de Rham cohomology is equivalent to the singular cohomology with real coefficients, i.e.,
+    \[
+        H^p_{dR}(M) \equiv H^p(M;\R) = H_p(M;\R)^*.
+    \]
+    See \cite[Chapter~18]{LeeSmooth_2013}.}
+    \[
+        H^k_{dR}(M,\de M) \equiv H_{n-k}(M;\R).
+    \]
+    canonically.
+\end{thm}
+
+\begin{ex}[Solid torus]
+    Consider a solid torus 
+    \[
+        M = \{ (\cos \theta x, \sin \theta x, z) \in \R^3 \colon (x-2)^2+z^2 \le 1, \ \theta \in [0,2\pi]\} \cong \D^2 \times \Sp^1.
+    \]
+    Then \(M\) is homotopically equivalent to \(\Sp^1\), so \(H_\bullet(M) = H_\bullet(\Sp^1) = \R[t]/(t^2)\), and by Theorem~\ref{thm: Poincaré-Lefscetz duality}
+    \begin{align*}
+        H^0_{dR}(M,\de M) = 0,  & &H^1_{dR}(M, \de M)=0, \\
+        H^2_{dR}(M,\de M) = \R, & &H^3_{dR}(M,\de M) = \R.
+    \end{align*}
+    The non triviality of \(H^2_{dR}(M,\de M)\) is caused by the presence of the non trivial loop \(\{0\} \times \Sp^1\), the ‘‘soul'' of the solid torus. Let us denote by \(\beta \in \Hcal^2_D(M)\) the harmonic representative of the non trivial class associated to it. 
+    
+    The electric field is always determined by \(E = \dif \phi\), where the scalar potential \(\phi \in \Omega^0_D(M)\) is the unique solution of the Poisson equation
+    \[
+        \triangle \phi = \rho,
+    \]
+    which always exists because \(\Hcal^0_D(M) \cong H^0_{dR}(M,\de M) = 0\).
+    
+    The magnetic field is \(B = \beta_B + \dif A\), where \(\beta_B \in \Hcal^2_D(M)\) is the harmonic representative of the class of \(B\) and \(A \in \Omega^1_D\) is the solution of
+    \[
+        \triangle A = J,
+    \]
+    which always exists because \(\Hcal^1_D(M) \cong H^1_{dR}(M,\de M) = 0\).
+\end{ex}
+
+\begin{ex}[Ball with spherical hole]
+    Let 
+    \[
+        M= \{ x \in \R^3 \colon 1\le |x| \le 2\} \cong \Sp^2 \times [0,1].
+    \]
+    Then \(M\) is homotopically equivalent to \(\Sp^2\), so \(H_\bullet(\Sp^2;\R) = (\R[t]/(t^2), \deg(t)=2)\), and by Theorem~\ref{thm: Poincaré-Lefscetz duality}
+    \begin{align*}
+        H^0_{dR}(M,\de M) = 0,  & &H^1_{dR}(M, \de M)=\R, \\
+        H^2_{dR}(M,\de M) = 0, & &H^3_{dR}(M,\de M) = \R.
+    \end{align*}
+    The non triviality of \(H^1_{dR}(M,\de M)\) is caused by the presence of the non trivial ‘‘middle sphere'' \(\Sp^2 \times \{1/2\}\).  
+
+    The electric field is \(E = \alpha_E + \dif \phi\), where \(\alpha_E \in \Hcal^1_D(M)\) is the harmonic representative of the class of \(E\) and \(\phi \in \Omega^0_D\) is the solution of
+    \[
+        \triangle \phi = \rho,
+    \]
+    which always exists because \(\Hcal^0_D(M) \cong H^0_{dR}(M,\de M) = 0\).
+
+    The magnetic field is \(B = \dif A\), where \(A \in \Omega^1_D\) is the solution of
+    \[
+        \triangle A = J,
+    \]
+    which exists if and only if the current density satisfies the compatibility condition
+    \[
+        \int_M \alpha \wedge \star J = 0,
+    \]
+    where \(\alpha \in \Hcal^1_D(M)\) is the harmonic representative of any non trivial class of \(H^1_{dR}(M,\de M)\), for instance the one associated to the ‘‘middle sphere''.
+\end{ex}
+
+\begin{ex}[Ball with toroidal hole]
+    Let \(M = \B^3 \setminus N \subset \R^3\), where
+    \[
+    \begin{split}
+        N &\coloneq \{ (\cos \theta x, \sin \theta x, z) \in \R^3 \colon (x-1/2)^2+z^2 < 1/16, \ \theta \in [0,2\pi]\} \\
+        &\cong \D^2 \times \Sp^1.
+    \end{split}
+    \]
+    A simple computation using the Mayer-Vietoris theorem (\(\B^3 = M \cup V\), with \(V \sim N\) a small neighborhood of \(N\)) shows that
+    \begin{align*}
+        H_0(M) = \R,  & &H_1(M)=\R, \\
+        H_2(M) = \R, & &H_3(M) = 0.
+    \end{align*}
+    By Theorem~\ref{thm: Poincaré-Lefscetz duality},
+    \begin{align*}
+        H^0_{dR}(M,\de M) = 0,  & &H^1_{dR}(M, \de M)=\R, \\
+        H^2_{dR}(M,\de M) = \R, & &H^3_{dR}(M,\de M) = \R.
+    \end{align*}
+    The non triviality of \(H^2_{dR}\) is caused by the presence of the loop
+    \[
+        \Gamma \coloneq \{(x,0,z) \in \R^3 \colon (x-1/2)^2 + z^2 = 1/8\} \cong \Sp^1,
+    \]
+    while the non triviality of \(H^1_{dR}(M)\) is caused by the presence of the ‘‘middle torus''
+    \[
+        T \coloneq \{ (\cos \theta x, \sin \theta x, z) \in \R^3 \colon (x,z) \in \Gamma, \ \theta \in [0,2\pi]\} \cong \Sp^1 \times \Sp^1.
+    \]
+
+    The electric field is \(E = \alpha_E + \dif \phi\), where where \(\alpha_E \in \Hcal^1_D(M)\) is the harmonic representative of the class of \(E\) and \(\phi \in \Omega^0_D\) is the solution of
+    \[
+        \triangle \phi = \rho,
+    \]
+    which always exists because \(\Hcal^0_D(M) \cong H^0_{dR}(M,\de M) = 0\).
+
+    The magnetic field is \(B = \beta_B + \dif A\), where \(\beta_B \in \Hcal^2_D(M)\) is the harmonic representative of the class of \(B\) and \(A \in \Omega^1_D\) is the solution of
+    \[
+        \triangle A = J,
+    \]
+    which exists if and only if the current density satisfies the compatibility condition
+    \[
+        \int_M \alpha \wedge \star J = 0,
+    \]
+    where \(\alpha \in \Hcal^1_D(M)\) is the harmonic representative of any non trivial class of \(H^1_{dR}(M,\de M)\), for instance the one associated to the ‘‘middle torus'' \(T\).
+\end{ex}

@@ -1,0 +1,94 @@
+Let \((M,g)\) be an oriented Riemannian \(n\)-manifold and denote by \(\omega_g \in \Omega^n(M)\) the corresponding Riemannian volume form. 
+
+Recall that the metric tensor \(g\) induces a scalar product (still denoted by \(g\)) on each fiber \((T^*_pM)^{\otimes k}\) by letting
+\[
+    g(\alpha,\beta) = g^{i_1j_1}\cdots g^{i_kj_k}\alpha_{i_1 \dots i_k} \beta_{j_1 \dots j_k}
+\]
+if \(\alpha = \alpha_{i_1 \dots i_k}\dif x^{i_1}\otimes \cdots \otimes\dif x^{i_k}\) and \(\beta = \beta_{j_1 \dots j_k}\dif x^{j_1}\otimes \dots \otimes \dif x^{j_k} \) in local coordinates. This scalar product restricts also to the subspace \(\Lambda^kT^*_pM\), and actually, since for an orthonormal dual basis \(\{e^1,\dots,e^n\}\)
+\[
+\begin{split}
+    g(e^{i_1} \wedge \cdots \wedge e^{i_k},e^{i_1} \wedge&\cdots \wedge e^{i_k}) \\
+    &= \frac{1}{(k!)^2}\sum_{\sigma,\tau \in S_k}\sgn(\sigma)\sgn(\tau)\delta^{\sigma(i_1)\tau(i_1)} \cdots \delta^{\sigma(i_k)\tau(i_k)} \\
+    &= \frac{1}{(k!)^2}\sum_{\sigma \in S_k}\sgn(\sigma)^2 = \frac{1}{k!},
+\end{split}
+\]
+(and \(g(e^I, e^J)=0\) if \(I\ne J\), of course) we have for any \(\omega = \omega_{i_1 \dots i_k}e^{i_1} \wedge \cdots \wedge e^{i_k}\) and \(\eta_{j_1 \dots j_k}e^{j_1} \wedge \cdots \wedge e^{j_k} \in \Lambda^kT^*_pM\)
+\[
+    g(\omega,\eta) = \frac{1}{k!}\delta^{i_1j_1}\cdots \delta^{i_kj_k}\omega_{i_1 \dots i_k} \eta_{j_1 \dots j_k} = \frac{1}{k!}g(\overline{\omega},\overline{\eta})
+\]
+where
+\[
+\begin{split}
+    \overline{\omega} &= \omega_{i_1 \dots i_k} e^{i_1} \otimes \cdots \otimes e^{i_k}\\
+    \overline{\eta} &= \eta{j_1 \dots j_k} e^{j_1} \otimes \cdots \otimes e^{j_k}
+\end{split}
+\]
+(and the indices are not ordered in this sum).
+
+
+We can identify \((\Lambda^kT^*_pM)^*\) with \(\Lambda^kT^*_pM\) by lowering every index, that is via the linear isomorphism
+\begin{align*}
+    \flat \colon \Lambda^kT^*_pM &\to (\Lambda^{k}T^*_pM)^* \\
+    \omega &\mapsto \omega^\sharp = g(\omega, \cdot ).
+\end{align*}
+We denote by \(\flat\) the inverse of \(\sharp\).
+
+On the other hand, the wedge product induces a pairing
+\begin{align*}
+    \wedge \colon \Lambda^kT^*_pM \times \Lambda^{n-k}T^*_pM &\to \R\\
+    (\omega,\eta) &\mapsto g(\omega\wedge \eta, \omega_g|_p)
+\end{align*}
+that allows us to identify \(\Lambda^{n-k}T^*_pM \equiv (\Lambda^kT^*_pM)^*\). 
+
+Combining these two identifications, we can give the following definition. 
+\begin{defn}
+    The \emph{Hodge star operator} is the \(C^\infty(M)\)-linear isomorphism 
+    \[
+        \star \colon \Omega^k(M) \to \Omega^{n-k}(M)
+    \]
+    defined by
+    \[
+        g(\eta, \star\omega) = g(\eta \wedge \omega, \omega_g) \qquad \forall \eta \in \Omega^k(M).
+    \]
+\end{defn}
+
+\begin{lemma}
+    Let \(\omega, \eta \in \Omega^k(M)\).
+    \begin{enumerate}[label=(\alph*)]
+        \item \(\omega \wedge \star \eta = \eta \wedge \star \omega\).
+        \item \(\star \star \omega = (-1)^{k(n-k)} \omega\), i.e., \(\star \star = (-1)^{k(n-k)}\Id\).
+        \item \(g(\star \omega, \star \eta) = g(\omega,\eta)\), i.e., \(\star\) is an isometry. 
+    \end{enumerate}
+\end{lemma}
+\begin{proof}
+    Point \((a)\) follows from the symmetry of scalar product:
+    \[
+        \omega \wedge \star \eta = g(\omega,\eta)\omega_g = \eta \wedge \star \omega.
+    \]
+    To prove point \((b)\), by linearity, it's enough to prove it for elements of the form \(\dif x^{i_1} \wedge \cdots \wedge \dif x^{i_k}\). So let \(\{i_1,\dots,i_k,j_1,\dots,j_{n-k}\} = \{1,\dots,n\}\) with \(i_1 < \dots < i_k\) and \(j_1 < \dots < j_{n-k}\). Then
+    \[
+        \star (\dif x^{i_1} \wedge \cdots \wedge \dif x^{i_k}) = \frac{\sigma(i_1 \dots i_k j_1 \dots j_{n-k})}{\sqrt{\det(g_{ij})}}\dif x^{j_1} \wedge \cdots \wedge \dif x^{j_k}
+    \]
+    where
+    \[
+    \sigma(i_1 \dots i_k j_1 \dots j_{n-k}) = (-1)^{i_1 + \cdots + i_k - (1+\cdots + k)}
+    \]
+    is the sign of the corresponding permutation.
+    Thus,
+    \[
+        \star \star (\dif x^{i_1} \wedge \cdots \wedge \dif x^{i_k}) =  \frac{(-1)^{1+\cdots+n-(1+\cdots+k) - (1 +\cdots+(n-k))}}{\sqrt{\det(g_{ij})}}\dif x^{i_1} \wedge \cdots \wedge \dif x^{i_k}
+    \]
+    Then observe that
+    \[        
+    1+\cdots+n-(1+\cdots+k) - (1 +\cdots+(n-k)) = k(n-k).
+    \]
+    
+    Finally, point \((c)\) follows from \((b)\):
+    \[
+    g(\star \omega, \star \eta) \omega_g = \star \omega \wedge \star \star \eta = (-1)^{k(n-k)} \star \omega \wedge \eta = \eta \wedge \star \omega = g(\eta,\omega)\omega_g. \qedhere
+    \]
+\end{proof}
+
+
+
+

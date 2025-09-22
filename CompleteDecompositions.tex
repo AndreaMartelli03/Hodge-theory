@@ -1,0 +1,69 @@
+From now on, drop every dependence on \((M,g)\) on the spaces \(\Omega^k,\Omega^k_D, \Omega^k_N\).
+
+\begin{lemma}\label{lemma: identities of subspaces}
+    The following identities hold true.
+    \begin{enumerate}[label=(\arabic*)]
+        \item \((\ker \dif|_{\Omega^k})^\perp = \delta \Omega^{k+1}_N\).
+        \item \((\ker \delta|_{\Omega^k})^\perp = \dif \Omega^{k-1}_D\).
+        \item \((\dif \Omega^{k-1})^\perp = \ker \delta|_{\Omega^k} \cap \Omega^k_N\)
+        \item \((\delta \Omega^{k+1})^\perp =\ker \dif|_{\Omega^k} \cap \Omega^k_D \)
+    \end{enumerate}
+\end{lemma}
+\begin{proof}
+
+\end{proof}
+
+We can define the Hodge Laplacian as before by 
+\[
+    \triangle \coloneq \dif \delta + \delta \dif.
+\]
+By Lemma~\ref{lem: by parts with boundary}, \(\triangle\) is self adjoint on both \(\Omega^k_D\) and \(\Omega^k_N\). 
+Denote
+\[
+    \Hcal^k \coloneq \ker \dif|_{\Omega^k} \cap \ker \delta|_{\Omega^k}, \qquad 
+    \Hcal^k_D \coloneq \Hcal^k \cap \Omega^k_D, \qquad 
+    \Hcal^k_N \coloneq \Hcal^k \cap \Omega^k_N.
+\]
+
+Since \(\triangle\) satisfies the same property we used to prove Lemma~\ref{lemma: harmonic iff closed and co-closed}, 
+\[
+    \Hcal^k_D = \{ \omega \in \Omega^k_D \colon \triangle \omega = 0\}, \qquad \Hcal^k_N = \{ \omega \in \Omega^k_N \colon \triangle \omega = 0\}.
+\]
+
+\begin{thm}[Hodge-Morrey decomposition]
+    It holds the following \(L^2\)-orthogonal decomposition:
+    \[
+        \Omega^k = \Hcal^k \oplus \dif \Omega^{k-1}_D \oplus \delta \Omega^{k+1}_N.
+    \]
+\end{thm}
+\begin{proof}
+    Using Lemma~\ref{lemma: identities of subspaces},
+    \begin{align*}
+        \Omega^k &= \dif \Omega^{k-1}_D \oplus (\dif \Omega^{k-1}_D)^\perp = \dif \Omega^{k-1}_D \oplus \ker \delta|_{\Omega^k} \\
+        &= \dif \Omega^{k-1}_D \oplus \delta \Omega^{k+1}_N \oplus (\delta \Omega^{k+1}_N)^\perp\cap \ker \delta|_{\Omega^k} \\
+        &= \dif \Omega^{k-1}_D \oplus \delta \Omega^{k+1}_N \oplus \ker \dif|_{\Omega^k} \cap \ker \delta|_{\Omega^k} \\
+        &= \dif \Omega^{k-1}_D \oplus \delta \Omega^{k+1}_N \oplus \Hcal^k. \qedhere
+    \end{align*}
+\end{proof}
+
+\begin{thm}[Hodge-Morrey-Friedrichs decompositions]
+    There hold the two \(L^2\)-orthogonal decompositions:
+    \begin{equation}\label{eq: Dirichlet decomposition}
+        \Omega^k = \Hcal^k_D \oplus (\Hcal^k \cap \delta \Omega^{k+1}) \oplus \dif \Omega^{k-1}_D \oplus \delta \Omega^{k+1}_N
+    \end{equation}
+    and
+    \begin{equation}\label{eq: Neumann decomposition}
+        \Omega^k = \Hcal^k_N \oplus (\Hcal^k \cap \dif \Omega^{k-1}) \oplus \dif \Omega^{k-1}_D \oplus \delta \Omega^{k+1}_N.
+    \end{equation}
+\end{thm}
+
+
+Consider the \emph{de Rham cohomology groups relative to the boundary}
+\[
+    H^k_{dR}(M,\de M) \coloneq \frac{\ker \dif|_{\Omega^k_D}}{\dif \Omega^{k-1}_D}
+\]
+(observe that \(\dif \Omega^{k-1}_D \subset \Omega^k_D\) because \((\dif \omega)|_{\de M} = \dif (\omega|_{\de M}) = 0\) for any \(\omega \in \Omega^{k-1}_D\), so the definition is well posed).
+
+\begin{thm}
+    The natural map \(\Hcal^k_D \to H^k_{dR}(M,\de M)\) is a linear isomorphism.
+\end{thm}

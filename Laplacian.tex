@@ -1,0 +1,115 @@
+Assume that \((M,g)\) is closed (compact and without boundary). From now on, we will omit the Riemannian volume form when integrating functions, that is, we write
+\[
+    \int_M f \coloneq \int_Mf \omega_g.
+\]
+We can endow \(\Omega^k(M)\) with the scalar product
+\[
+    (\omega,\eta)_{L^2} \coloneq \int_M g(\omega,\eta) = \int_M \omega \wedge \star \eta.
+\]
+Taking the metric completion with respect to the induced norm, we construct the Hilbert space of \(L^2\) sections of \(\Lambda^kT^*M\), which we will denote by \(L^2(M;\Lambda^kT^*M)\). Observe that since the Hodge star is a linear isometry pointwise, it's also a linear isometry between the corresponding \(L^2\)-spaces.
+
+Similarly, defining the scalar product
+\[
+    (\omega,\eta)_{H^m} \coloneq \int_M g(\omega,\eta) + \sum_{j=1}^m \int_M g(\nabla^j\omega,\nabla^j\eta) 
+\]
+and taking the metric completion of \(\Omega^k(M)\) with respect to the induced norm, we find the Sobolev spaces \(H^m(M;\Lambda^kT^*M)\).
+
+Observe that for any \(\eta \in \Omega^k(M)\),
+\[
+    \|\dif \eta\|_{L^2} \le \|\nabla \eta\|_{L^2} \le \|\eta\|_{H^1}.
+\]
+Indeed, at the center of normal coordinates,
+\[
+    \dif \eta = \de_j\eta_{i_1\dots i_k}\dif x^j \wedge \dif x^{i_1}\wedge \cdots \wedge \dif x^{i_k} = \dif x^j \wedge \nabla_j\eta 
+\]
+so,
+\[
+    g(\dif \eta,\dif \eta) \le g(\nabla \eta, \nabla \eta).
+\]
+Thus, the exterior derivative extends to a bounded linear operator
+\[
+    \dif \colon H^1(M;\Lambda^kT^*M) \to L^2(M,\Lambda^{k-1}T^*M).
+\]
+Moreover, for fixed \(\omega \in L^2(M;\Lambda^kT^*M)\), the linear operator
+\[
+    \eta \mapsto \int_Mg(\omega, \dif \eta)
+\]
+is \(H^1\)-bounded, and can therefore be represented uniquely by an element in \(H^1(M;\Lambda^*T^{k-1}M)\).
+\begin{defn}
+    The \emph{co-differential} \(\delta = \dif^*\) is the adjoint of the exterior derivative, i.e., the linear mapping
+    \[
+        \delta \colon L^2(M;\Lambda^kT^*M) \to H^1(M;\Lambda^{k-1}T^*M)
+    \]
+    defined by
+    \[
+        \int_Mg(\delta \omega,\eta) = \int_Mg(\omega, \dif \eta) \qquad \forall \eta \in \Omega^{k-1}(M)
+    \]
+    for every \(\omega \in L^2(M;\Lambda^kT^*M)\).
+\end{defn}
+\begin{prop}\label{prop: co-boundary}
+    For every \(\omega \in L^2(M;\Lambda^kT^*M)\), 
+    \[
+        \delta \omega = (-1)^{kn+n+1}\star \dif \star \omega.
+    \]
+    In particular, if \(\omega \in \Omega^k(M)\) then \(\delta \omega \in \Omega^{k-1}(M)\).
+\end{prop}
+\begin{proof}
+    Let us prove the claim for \(\omega \in \Omega^k(M)\) (then the general claim follows by density). By Stokes theorem and the properties of \(\star\), for every \(\eta \in \Omega^{k-1}(M)\),
+    \begin{align*}
+        (\omega, \dif \eta)_{L^2} &= \int_M \dif \eta \wedge \star \omega \\
+        &= \int_M \dif (\eta \wedge \star \omega) -(-1)^{k-1}\int_M \eta \wedge \dif \star \omega \\
+        &= (-1)^k \int_M \eta \wedge \dif \star \omega \\
+        &= (-1)^{k+(n-k+1)(k-1)} \int_M \eta \wedge \star \star \dif \star \omega \\
+        &= (-1)^{kn+n+1}\int_M \eta \wedge \star \star \dif \star \omega = ((-1)^{kn+n+1}\star \dif \star \omega,\eta)_{L^2}. \qedhere
+    \end{align*}
+\end{proof}
+
+\begin{defn}
+    The \emph{Hodge Laplacian} is the second order differential operator 
+    \[  
+        \triangle = \delta \dif + \dif \delta.
+    \]
+\end{defn}
+
+\begin{defn}
+    The \emph{connection Laplacian} the second order differential operator \(\nabla^*\nabla\) defined by
+    \[
+        \int_M g(\nabla^*\nabla \omega, \eta) = \int_M (\nabla\omega,\nabla \eta) \qquad \forall \eta \in \Omega^k(M)
+    \]
+    for any \(\omega \in \Omega^k(M)\).
+\end{defn}
+
+Both operators are self-adjoint with respect to the \(L^2\)-product: for every \(\omega,\eta \in \Omega^k(M)\), we have
+\[
+\begin{split}
+    (\triangle \omega,\eta)_{L^2}&=\int_M g(\triangle \omega, \eta) = \int_M g(\dif \omega, \dif \eta) + \int_M g(\delta \omega,\delta g)\\
+    (\nabla^*\nabla \omega,\eta)_{L^2}&=\int_M g(\nabla^*\nabla \omega, \eta) = \int_M (\nabla\omega,\nabla \eta)
+\end{split}
+\]
+and both identities are symmetric on the right hand side. Moreover, for functions (\(k=0\)), since \(\nabla = \dif\) and \(\delta = 0\), they coincide to the usual Laplace-Beltrami operator (up to sign). For order higher then zero they don't coincide. However, there is a relation which involves curvature terms (the proof is just a computation, see \cite[Theorem~9.4.1]{PetersenRiemannian_2006}).
+
+\begin{lemma}[Weitzenb\"ock identity]\label{lemma: Weitzenbock identity}
+    For any \(\omega \in \Omega^k(M)\),
+    \[
+        \triangle\omega = \nabla^*\nabla \omega +  \Ric(\omega),
+    \]
+    where, for any orthonormal frame \(\{e_1,\dots,e_n\}\)
+    \[
+        \Ric(\omega)(X_1,\dots,X_k) \coloneq\sum_{i=1}^k\sum_{j=1}^n (R(e_j,X_i)\omega)(X_1,\dots,e_j,\dots,X_k)
+    \]
+    is the \emph{Weitzenböck curvature operator}\footnote{
+    Following the convention used in \cite{PetersenRiemannian_2006}, here
+    \[
+        R(X,Y)=\nabla_X\nabla_y - \nabla_Y\nabla_X-\nabla_{[X,Y]}.
+    \]
+    }.
+\end{lemma}
+\begin{rmk}\label{rmk: Weitzenbock curvature operator on 1-form}
+    If \(\omega \in \Omega^1(M)\) is a 1-form, then
+    \[
+    \begin{split}
+        g(\Ric(\omega),\omega) &= \Ric(\omega)(\omega^\sharp) = \sum_j (R(e_j,\omega^\sharp)\omega)(e_j) = \sum_j g(R(e_j,\omega^\sharp)\omega^\sharp,e_j) \\
+        &= \Ric(\omega^\sharp,\omega^\sharp).
+    \end{split}
+    \]
+\end{rmk}
