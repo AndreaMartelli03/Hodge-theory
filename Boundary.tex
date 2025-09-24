@@ -1,12 +1,14 @@
+In this section, we see the analogous of the Hodge theory, but for compact manifold with boundary. For a detailed exposition, see \cite{SchwarzHodge_1995}. 
+
 Let \((M,g)\) be a compact oriented Riemannian manifold with non empty boundary \(\de M\). A possible definition of co-boundary as the \(L^2\)-adjoint of \(\dif\) would not give rise to a self-adjoint Laplacian, because boundary terms would appear. For this reason, we give the definition of co-boundary using Proposition~\ref{prop: co-boundary}:
 \[
     \delta \coloneq (-1)^{kn+n+1}\star \dif \star.
 \]
 
-\begin{lemma}\label{lem: by parts with boundary}
+\begin{lemma}[Green]\label{lem: by parts with boundary}
     For any \(\omega \in \Omega^{k}(M)\) and \(\eta \in \Omega^{k-1}(M)\),
     \[
-        \int_M g(\omega, \dif \eta) = \int_M g(\delta \omega, \eta) + \int_{\de M}(\omega \wedge \star \eta)|_{\de M}.
+        \int_M g(\omega, \dif \eta) = \int_M g(\delta \omega, \eta) + \int_{\de M}(\eta \wedge \star \omega)|_{\de M}.
     \]
 \end{lemma}
 \begin{proof}
@@ -14,101 +16,107 @@ Let \((M,g)\) be a compact oriented Riemannian manifold with non empty boundary 
 \end{proof}
 
 \begin{defn}
-    We say that \(\omega \in \Omega^k(M)\) satisfies the \emph{(homogeneous) Dirichlet boundary condition} if 
+    We say that \(\omega \in \Omega^k(M)\) satisfies 
+    \begin{itemize}
+        \item the \emph{(homogeneous) Dirichlet boundary condition} if 
         \[
             \omega|_{\de M} =0;
         \] 
+        \item the \emph{(homogeneous) Neumann boundary condition} if
+        \[
+            (\star \omega)|_{\de M} = 0.
+        \]
+    \end{itemize}
+    
     We denote
-    \[
-        \Omega^k_D(M) \coloneq \{ \omega \in \Omega^k(M) \colon \omega|_{\de M}=0\}.\\
-    \]
+    \begin{align*}
+        \Omega^k_D(M) &\coloneq \{ \omega \in \Omega^k(M) \colon \omega|_{\de M}=0\},\\
+        \Omega^k_N(M) &\coloneq \{\omega \in \Omega^k(M) \colon (\star \omega)|_{\de M}=0\}
+    \end{align*}
 \end{defn}
 
-\begin{rmk}
-    One could also consider the \emph{co-Dirichlet boundary condition}
-    \[
-        (\star \omega)|_{\de M} = 0
-    \]
-    and analogous results hold. However, the correspondent harmonic cohomology wouldn't turn out to be isomorphic to a de Rham cohomology (cf. Theorem~\ref{thm: Hodge - de Rham with Dirichlet BC}).
-\end{rmk}
+\begin{lemma}\label{lemma: dOmega_D subset Omega_D}
+    \(\dif \Omega^{k-1}_D(M) \subset \Omega^k_D(M)\) and \(\delta \Omega^{k+1}_N(M) \subset \Omega^k_N(M)\).
+\end{lemma}
+\begin{proof}
+    Let's prove that \(\dif \Omega^{k-1}_D(M) \subset \Omega^k_D(M)\). For any \(\omega \in \Omega^{k-1}_D\), \((\dif \eta)|_{\de M} = \dif (\eta|_{\de M}) = 0\).
 
-From now on, drop every dependence on \(M\) on the spaces \(\Omega^k,\Omega^k_D\).
+    To prove \(\delta \Omega^{k+1}_N(M) \subset \Omega^k_N(M)\), just observe that \(\omega \in \Omega^{k+1}_N(M)\) if and only if \(\star \omega \in \Omega^{n-k-1}_D(M)\), so \(0=(\dif \star\omega)_{\de M} = \pm (\star\delta\omega)|_{\de M}\).
+\end{proof}
+
+Denote also 
+\[
+    \Hcal^k(M) \coloneq \ker \dif|_{\Omega^k} \cap \ker \delta|_{\Omega^k}, \qquad 
+    \Hcal^k_D(M) \coloneq \Hcal^k \cap \Omega^k_D, \qquad 
+    \Hcal^k_N(M) \coloneq \Hcal^k \cap \Omega^k_N.
+\]
+Clearly, the Hodge star gives an isomorphism between \(\Hcal^k_D(M)\) and \(\Hcal^{n-k}_N(M)\).
+
 
 We can define the Hodge Laplacian as before by 
 \[
     \triangle \coloneq \dif \delta + \delta \dif.
 \] 
-Denote also 
-\[
-    \Hcal^k_D \coloneq \{ \omega \in \Omega^k_D \colon \triangle \omega = 0\}.
-\]
-By Lemma~\ref{lem: by parts with boundary}, \(\triangle\) is self adjoint on \(\Omega^k_D\), so it satisfies the same property we used to prove Lemma~\ref{lemma: harmonic iff closed and co-closed}. Thus, with the same proof, we get
-\[
-    \Hcal^k_D = \ker \dif|_{\Omega^k_D} \cap \ker \delta|_{\Omega^k_D}.
-\]
+However, we did not defined an harmonic form \(\omega\) by the formula \(\triangle \omega = 0\), but rather by requiring that \(\omega\) is both closed and co-closed, in virtue of Lemma~\ref{lemma: harmonic iff closed and co-closed}. The problem is that \(\triangle\) is not a self-adjoint operator anymore, so the requirement \(\triangle \omega = 0\) is weaker.
 
-Using the same argument with the Fredholm alternative, we get the following.
-
-\begin{thm}\label{thm: Hodge with BC}
-    The space \(\Hcal^k_D\) is finite dimensional. Moreover, there hold the following \(L^2\)-orthogonal decomposition:
-    \begin{equation*}
-        \Omega^k_D = \Hcal^k_D \oplus \dif \Omega^{k-1}_D \oplus \delta\Omega^{k+1}_D \cap \Omega^{k}_D.
-    \end{equation*}
-    In particular, every \(\omega \in \Omega^k_D\) can be written uniquely as 
-    \[
-        \omega = \alpha + \dif \beta + \delta\gamma,
+However, by Lemma~\ref{lem: by parts with boundary}, \(\triangle\) is self-adjoint on the subspace
+\[
+    \mathcal{X}^k \coloneq \{ \omega \in \Omega^k(M) \colon \omega|_{\de M} = 0, \ (\delta \omega)|_{\de M} = 0\}.
+\]
+Therefore, the Fredholm alternative yields the following.
+\begin{prop}\label{prop: fredholm}
+    For any \(\theta \in \Omega^k(M)\), the problem 
+    \[  
+        \triangle \omega = \theta, \qquad \omega|_{\de M} = 0, \ (\delta \omega)|_{\de M} = 0
     \]
-    with \(\alpha \in \Hcal^k_D\) harmonic, \(\beta \in \Omega^{k-1}_D\) and \(\gamma \in \Omega^{k+1}_D\). 
+    has a solution if and only if \(\theta\) is \(L^2\)-orthogonal to
+    \[
+        \Hcal^k_\triangle(M) \coloneq \{ \eta \in \Omega^k(M) \colon \triangle \eta = 0, \eta|_{\de M}=0, (\delta\eta)|_{\de M}=0 \},
+    \]
+    i.e., 
+    \[
+        \int_M g(\theta, \eta) = 0 \qquad \forall \eta \in \mathcal{X} \text{ s.t. } \triangle\eta= 0.
+    \]
+    In that case, the solution is unique.
+\end{prop}
+\begin{rmk}
+    Observe that \(\Hcal^k_D(M) \subset \Hcal^k_\triangle(M)\).
+\end{rmk}
+
+It holds the analogous result of Theorem~\ref{thm: Hodge} (see \cite[Theorem~2.2.2, Theorem~2.2.7, Theorem~2.4.2, Theorem~2.4.8, Corollary~2.4.9]{SchwarzHodge_1995}).
+
+\begin{thm}[Hodge-Morrey-Friedrichs]\label{thm: Hodge with BC}
+    The spaces \(\Hcal^k_D\) and \(\Hcal^k_N\) are finite dimensional. Moreover, there hold the following \(L^2\)-orthogonal decompositions:
+    \begin{align*}
+        \Omega^k(M) &= \Hcal^k(M) \oplus \dif \Omega^{k-1}_D(M) \oplus \delta \Omega^{k+1}_N(M) &&\text{(Hodge-Morrey)}\\
+        \Hcal^k(M) &= \Hcal^k_D(M) \oplus (\Hcal^k(M) \cap \delta\Omega^{k+1}(M)) &&\text{(Friedrichs)}\\
+        \Hcal^k(M) &= \Hcal^k_N(M) \oplus (\Hcal^k(M) \cap \dif \Omega^{k-1}(M)) &&\text{(Friedrichs)}.
+    \end{align*}
 \end{thm}
-\begin{proof}
-    Exactly as in the proof of Theorem~\ref{thm: Hodge}, the Fredholm alternative yields that \(\Hcal^k_D\) is finite dimensional and, intersecting the decomposition with \(\Omega^k_D\) and using elliptic regularity, 
-    \begin{equation*}
-        \Omega^k_D = \Hcal^k_D \oplus (\triangle \Omega^k_D \cap \Omega^k_D).
-    \end{equation*}
-
-    Observe that \(\dif \Omega^{k-1}_D \subset \Omega^k_D\), because \((\dif \omega)|_{\de M} = \dif (\omega|_{\de M}) = 0\) for any \(\omega \in \Omega^{k-1}_D\). Moreover, since every harmonic form is co-closed, \(\dif \Omega^{k-1}_D \subset (\Hcal^k_D)^\perp\), so
-    \[
-        \triangle \Omega^k_D \cap \Omega^k_D = \dif \Omega^{k-1}_D \oplus (\dif \Omega^{k-1}_D)^\perp \cap \Omega^k_D.
-    \]
-    
-    To conclude, it's enough to prove that 
-    \begin{equation}\label{eq: boundary Hodge - 1}
-        \dif \Omega^{k-1}_D = (\ker \delta|_{\Omega^k_D})^\perp
-    \end{equation}
-    and
-    \begin{equation}\label{eq: boundary HOdge - 2}
-        \ker \delta|_{\Omega^k_D} \cap \Delta \Omega^k_D = \delta \Omega^k_D \cap \Omega^k_D
-    \end{equation}
-
-    Let us prove \eqref{eq: boundary Hodge - 1}. On one hand, \(\dif \Omega^{k-1}_D \subset (\ker \delta|_{\Omega^k_D})^\perp\) because for any \(\omega \in \Omega^{k-1}_D\) adn \(\eta \in \ker \delta|_{\Omega^k_D}\),
-    \[
-        (\dif \omega, \eta)_{L^2} = (\omega, \delta \eta)_{L^2} = 0.
-    \]
-    On the other hand, if \(\omega \in (\ker \delta|_{\Omega^k_D})^\perp \subset (\Hcal^k_D)^\perp \cap \Omega^k_D = \triangle \Omega^k_D \cap \Omega^k_D\), then we can write
-    \[
-        \omega = \triangle \beta = \dif \delta \beta + \delta \dif \beta
-    \]
-    for some \(\beta \in \Omega^k_D\). But \(\dif \delta \beta \in \dif \Omega^{k-1}_D \subset (\ker \delta|_{\Omega^k_D})^\perp\), so also \(\delta \dif \beta \in (\ker \delta|_{\Omega^k_D})^\perp\), which implies that \(\delta \dif \beta =0\). Thus \(\omega = \dif \delta \beta\). This proves \((\ker \delta|_{\Omega^k_D})^\perp \subset \dif \Omega^{k-1}_D\).
-
-    Now let's prove \eqref{eq: boundary HOdge - 2}. The inclusion \(\delta \Omega^k_D \cap \Omega^k_D \subset \ker \delta|_{\Omega^k_D} \cap \Delta \Omega^k_D\) follows immediately by the fact that \(\delta^2=0\), so let's prove the opposite inclusion. Let \(\omega\in \ker \delta|_{\Omega^k_D} \cap \Delta \Omega^k_D\), so write
-    \[
-        \omega = \triangle \beta = \dif \delta + \delta \dif \beta.
-    \]
-    But observe that since \(0=\delta \omega= \delta \dif \delta \beta\), 
-    \[
-        (\dif \delta \beta, \dif \delta \beta)_{L^2} = (\delta \dif \delta \eta, \eta)_{L^2} = 0,
-    \]
-    so actually \(\omega = \delta \dif \beta \in \delta \Omega^k_D\) (and by assumption \(\omega \in \Omega^k_D\)).
-\end{proof}
-
 
 Consider the \emph{de Rham cohomology groups relative to the boundary}
 \[
-    H^k_{dR}(M,\de M) \coloneq \frac{\ker \dif|_{\Omega^k_D}}{\dif \Omega^{k-1}_D}
+    H^k_{dR}(M,\de M) \coloneq \frac{\{\omega \in \Omega^k_D(M) \colon \dif \omega = 0\}}{\{ \dif \eta \colon \eta \in \Omega^{k-1}_D(M)\}}
 \]
-(observe that \(\dif \Omega^{k-1}_D \subset \Omega^k_D\) because \((\dif \omega)|_{\de M} = \dif (\omega|_{\de M}) = 0\) for any \(\omega \in \Omega^{k-1}_D\), so the definition is well posed).
+(by Lemma~\ref{lemma: dOmega_D subset Omega_D}, the definition is well posed).
 
-With the same proof of Theorem~\ref{thm: Hodge - de Rham}, we get the following analogous result.
 \begin{thm}\label{thm: Hodge - de Rham with Dirichlet BC}
-    The natural map \(\Hcal^k_D \to H^k_{dR}(M,\de M)\) is a linear isomorphism. In other words, every de Rham cohomology class relative to the boundary is represented by a unique harmonic form satisfying the homogeneous Dirichlet boundary condition.
+    The natural map \(\Hcal^k_D(M) \to H^k_{dR}(M,\de M)\) is a linear isomorphism. In other words, every de Rham cohomology class relative to the boundary is represented by a unique harmonic form satisfying the homogeneous Dirichlet boundary condition.
 \end{thm}
+\begin{proof}
+    Let's prove that \(\Hcal^k_D(M) \to H^k_{dR}(M,\de M)\) is injective. Suppose \(\omega = \dif \theta \in \Hcal^k_D(M)\) for some \(\theta \in \Omega^{k-1}_D(M)\). By definition, \(\omega\) is co-closed. Then, using Lemma~\ref{lem: by parts with boundary},
+    \[
+        (\omega,\omega)_{L^2} = (\dif \theta, \omega)_{L^2} = (\theta, \delta \omega)_{L^2} + \int_{\de M} \theta \wedge \star\omega =0,
+    \]
+    so \(\omega = 0\).
+
+    Now let's prove that \(\Hcal^k_D(M) \to H^k_{dR}(M,\de M)\) is surjective. Fix a class \([\omega] \in H^k_{dR}(M,\de M)\) and, using Theorem~\ref{thm: Hodge with BC},  write 
+    \[
+        \omega = \theta + \dif \eta + \delta (\alpha + \beta)
+    \]
+    with \(\theta \in \Hcal^k_D(M), \eta \in \Omega^{k-1}_D(M), \alpha \in \Omega^{k+1}_N(M)\) and \(\beta \in \Omega^{k+1}(M)\) such that \(\delta \beta \in \Hcal^k(M)\). Since \(0=\dif \omega = \dif \delta \alpha\) and \(\alpha \in \Omega^{k+1}_N(M)\), by Lemma~\ref{lem: by parts with boundary}
+    \[
+        (\delta \alpha, \delta \alpha)_{L^2} = (\alpha, \dif \delta \alpha)_{L^2} - \int_{\de M}\delta \alpha \wedge \star \alpha =0,
+    \]
+    so actually \(\omega = \theta + \dif \eta + \delta \beta\). But then \(\delta \beta \in \Hcal^k_D\), therefore \(\delta \beta = 0\). Thus, \(\omega = \theta + \dif \eta\) with \(\eta \in \Omega^{k-1}_D(M)\), i.e., \([\omega]=[\theta]\).
+\end{proof}

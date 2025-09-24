@@ -104,7 +104,7 @@
 }
 \addbibresource{biblio.bib}
 
-\title{Hodge theory}
+\title{Hodge theory and stationary Maxwell equations}
 \author{Andrea Martelli}
 \date{September 2025}
 \begin{document}
@@ -112,23 +112,33 @@
 \maketitle
 
 \begin{abstract}
-    This notes on Hodge theory are the content of the seminar for the exam of the course Mathematical Physics - Differential Geometric Methods, held by Enrico Pagani during the Spring semester of 2025. 
+    These notes are the content of my seminar for the exam in the course \emph{Mathematical Physics – Differential Geometric Methods}, taught by Enrico Pagani during the Spring semester of 2025.
 \end{abstract}
 \tableofcontents
+
+\section*{Introduction}
+The main purposes of these notes are
+\begin{itemize}
+    \item to give a quick introduction to Hodge theory on oriented closed Riemannian manifolds;
+    \item to analyze the relations between the topology of a domain and a boundary value problem on it (the stationary Maxwell equations in vacuum with homogeneous Dirichlet boundary condition).
+\end{itemize}
+The two goals are very different, because they have different geometric settings. Nevertheless, it's possible to build a theory analogous to the Hodge theory for manifolds with boundary, when imposing homogeneous Dirichlet boundary conditions. 
+
+Therefore, in the first section I introduce the Hodge star operator without assuming anything on the manifold, other than it is oriented and compact (however, one could do everything with compactly supported forms and remove also the latter assumption). In the second section, I assume that the manifold is without boundary and treat Hodge theory as done in \cite{PetersenRiemannian_2006}. In particular, I prove some result concerning the first Betti number of closed orientable manifolds admitting non negative Ricci curvature. In the third section, I present the analogous of Hodge theory for manifolds with boundary, without proving the main result (Theorem~\ref{thm: Hodge with BC}). A detailed reference for this topic is \cite{SchwarzHodge_1995}. In the fourth and last section, I analyze a boundary value problem associated to the stationary Maxwell equation in vacuum depending on the topology of the domain in \(\R^3\). I find this discussion quite interesting, because it shows that topology can obstruct both existence and uniqueness of the solution to the boundary value problem.
 
 \section{Hodge star operator}
 \input{Operator}
 
-\section{Hodge theory for closed manifolds}
+\section{Hodge theory for oriented closed manifolds}
 \subsection{Co-differential and Laplacians}
 \input{Laplacian}
 \subsection{The Hodge theorem}
 \input{HodgeTheorem}
 
-\section{Hodge theory with Dirichlet boundary conditions}
+\section{Hodge theory with homogeneous Dirichlet boundary condition}
 \input{Boundary}
 
-\section{Static Maxwell equations}
+\section{Stationary Maxwell equations}
 \input{Maxwell}
 
 \printbibliography
