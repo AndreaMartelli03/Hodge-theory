@@ -1,4 +1,4 @@
-Assume that \((M,g)\) is closed (compact and without boundary). From now on, we will omit the Riemannian volume form when integrating functions, that is, we write
+Assume that \((M,g)\) is also closed (compact and without boundary). From now on, we will omit the Riemannian volume form when integrating functions, that is, we write
 \[
     \int_M f \coloneq \int_Mf \omega_g.
 \]
@@ -72,7 +72,7 @@ is \(H^1\)-bounded, and can therefore be represented uniquely by an element in \
 \end{defn}
 
 \begin{defn}
-    The \emph{connection Laplacian} the second order differential operator \(\nabla^*\nabla\) defined by
+    The \emph{connection Laplacian} is the second order differential operator \(\nabla^*\nabla\) defined by
     \[
         \int_M g(\nabla^*\nabla \omega, \eta) = \int_M (\nabla\omega,\nabla \eta) \qquad \forall \eta \in \Omega^k(M)
     \]
@@ -82,7 +82,7 @@ is \(H^1\)-bounded, and can therefore be represented uniquely by an element in \
 Both operators are self-adjoint with respect to the \(L^2\)-product: for every \(\omega,\eta \in \Omega^k(M)\), we have
 \[
 \begin{split}
-    (\triangle \omega,\eta)_{L^2}&=\int_M g(\triangle \omega, \eta) = \int_M g(\dif \omega, \dif \eta) + \int_M g(\delta \omega,\delta g)\\
+    (\triangle \omega,\eta)_{L^2}&=\int_M g(\triangle \omega, \eta) = \int_M g(\dif \omega, \dif \eta) + \int_M g(\delta \omega,\delta \eta)\\
     (\nabla^*\nabla \omega,\eta)_{L^2}&=\int_M g(\nabla^*\nabla \omega, \eta) = \int_M (\nabla\omega,\nabla \eta)
 \end{split}
 \]

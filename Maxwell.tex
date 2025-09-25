@@ -1,11 +1,11 @@
-Consider a domain \(M \subset \R^3\) with smooth boundary \(\de M\), having outer unit normal \(\nu \colon \de M \to \R^3\). The stationary Maxwell equations in vacuum are
+Consider a connected domain \(M \subset \R^3\) with smooth boundary \(\de M\), having outer unit normal \(\nu \colon \de M \to \R^3\). The stationary Maxwell equations in vacuum are
 \begin{align*}
     \curl \mathbf{E} &= 0 && \text{(Faraday)}\\
-    \dive \mathbf{E} &= \frac{\rho}{\eps_0} & &\text{(Gauss)}\\
+    \dive \mathbf{E} &= \frac{\rho}{4\pi\eps_0} & &\text{(Gauss)}\\
     \dive \mathbf{B} &= 0 && \text{(no magnetic charges)}\\
-    \curl \mathbf{B} &= \mu_0\mathbf{j} && \text{(Ampère)}
+    \curl \mathbf{B} &= \frac{\mu_0}{4\pi}\mathbf{j} && \text{(Ampère)}
 \end{align*}
-where the electric field \(\mathbf{E} \colon M \to \R^3\) and the magnetic field \(\mathbf{B} \colon M \to \R^3\) are the unknowns, while the charge density \(\rho \in C^\infty_c(M)\), the current density \(\mathbf{j} \in C^\infty_c(M;\R^3)\), and the electric and magnetic permittivity constants in vacuum \(\eps_0,\mu_0 >0\) (that from now on we assume to be equal to 1, after having chosen a suitable unit system) are the data. We will impose the following boundary conditions: 
+where the electric field \(\mathbf{E} \colon M \to \R^3\) and the magnetic field \(\mathbf{B} \colon M \to \R^3\) are the unknowns, while the charge density \(\rho \in C^\infty_c(M)\), the current density \(\mathbf{j} \in C^\infty_c(M;\R^3)\), and the electric and magnetic permittivity constants in vacuum \(\eps_0,\mu_0 >0\) (that from now on we assume to be equal to \(1/4\pi\) and \(4\pi\), after having chosen a suitable unit system) are the data. We will impose the following boundary conditions: 
 \begin{equation}\label{eq: BC vectors}
     \mathbf{E} \times \nu = 0, \qquad \mathbf{B} \cdot \nu = 0  \qquad \text{on }\de M.
 \end{equation}

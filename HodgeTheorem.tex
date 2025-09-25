@@ -1,52 +1,54 @@
-Denote \(\Omega^k=\Omega^k(M)\). The Hodge theorem is about the relation between the topology of \(M\) and the presence of (Hodge) harmonic forms.
+The Hodge theorem is about the relation between the topology of \(M\) and the presence of (Hodge) harmonic forms.
 \begin{defn}
-    A form \(\omega\in \Omega^k\) is \emph{(Hodge) harmonic} if \(\triangle \omega = 0\). We will denote by
+    A form \(\omega\in \Omega^k(M)\) is \emph{(Hodge) harmonic} if \(\triangle \omega = 0\). We will denote by
     \[
-        \Hcal^k=\Hcal^k(M,g) \coloneq \{\omega \in \Omega^k \colon \triangle \omega = 0\}
+        \Hcal^k(M)=\Hcal^k(M,g) \coloneq \{\omega \in \Omega^k(M) \colon \triangle \omega = 0\}
     \]
     the subspace of harmonic \(k\)-forms. 
 \end{defn}
 
 
 \begin{lemma}\label{lemma: harmonic iff closed and co-closed}
-    A form \(\omega \in \Omega^k\) is harmonic if and only if is both closed and co-closed. In other words, 
+    A form \(\omega \in \Omega^k(M)\) is harmonic if and only if is both closed and co-closed. In other words, 
     \[
-        \Hcal^k = \ker \dif|_{\Omega^k} \cap \ker \delta|_{\Omega^{k+1}}. 
+        \Hcal^k(M) = \ker \dif|_{\Omega^k(M)} \cap \ker \delta|_{\Omega^{k}(M)}. 
     \]
 \end{lemma}
 \begin{proof}
-    Just observe that for any \(\omega \in \Omega^k\),
+    Just observe that for any \(\omega \in \Omega^k(M)\),
     \[
         (\triangle\omega,\omega)_{L^2} = (\dif \omega, \dif \omega)_{L^2} + (\delta \omega, \delta\omega)_{L^2}.\qedhere
     \]  
 \end{proof}
 
 \begin{thm}[Hodge decomposition]\label{thm: Hodge}
-    The space \(\Hcal^k\) is finite dimensional and it holds the \(L^2\)-orthogonal decomposition
+    The space \(\Hcal^k(M)\) is finite dimensional and it holds the \(L^2\)-orthogonal decomposition
     \[
-        \Omega^k= \Hcal^k \oplus \dif \Omega^{k-1} \oplus \delta \Omega^{k+1}.
+        \Omega^k(M)= \Hcal^k(M) \oplus \dif \Omega^{k-1}(M) \oplus \delta \Omega^{k+1}(M).
     \]
-    In particular, every \(\omega \in \Omega^k\) can be written uniquely as 
+    In particular, every \(\omega \in \Omega^k(M)\) can be written uniquely as 
     \[
         \omega = \alpha + \dif \beta + \delta \gamma,
     \]
-    with \(\alpha \in \Hcal^k\) harmonic, \(\beta \in \Omega^{k-1}\) and \(\gamma \in \Omega^{k+1}\). Moreover, we can choose \(\beta\) to be co-exact and \(\gamma\) to be exact.
+    with \(\alpha \in \Hcal^k(M)\) harmonic, \(\beta \in \Omega^{k-1}(M)\) and \(\gamma \in \Omega^{k+1}(M)\). Moreover, we can choose \(\beta\) to be co-exact and \(\gamma\) to be exact.
 \end{thm}
 \begin{proof}
-    The classical Fredholm alternative for elliptic operators yields that \(\Hcal^k\) is finite dimensional and the orthogonal decomposition
+    The classical Fredholm alternative for elliptic operators yields that \(\Hcal^k(M)\) is finite dimensional and the orthogonal decomposition
     \[
         L^2(M;\Lambda^kT^*M)= \ker(\triangle^*) \oplus \im(\triangle)= \ker(\triangle) \oplus \im(\triangle),
     \]
-    having used that \(\triangle\) is self-adjoint. Then, intersecting with \(\Omega^k\) and applying elliptic regularity, we get
+    having used that \(\triangle\) is self-adjoint. Then, intersecting with \(\Omega^k(M)\) and applying elliptic regularity, we get
     \[
-        \Omega^k = \Hcal^k \oplus \triangle \Omega^k.
+        \Omega^k(M) = \Hcal^k(M) \oplus \triangle (\Omega^k(M)).
     \]
     
-    Clearly, \(\triangle \Omega^k = \dif \Omega^{k-1} + \delta \Omega^{k+1}\), as
+    Clearly, \(\triangle (\Omega^k(M)) \subset \dif \Omega^{k-1}(M) + \delta \Omega^{k+1}(M)\), as
     \[
         \triangle \eta = \dif (\delta \eta) + \delta (\dif \eta) \qquad \forall \eta \in \Omega^k.
     \]
-    Moreover, \(\dif\Omega^{k-1}\) and \(\delta\Omega^{k+1}\) are orthogonal. Indeed, for any \(\beta \in \Omega^{k-1}\) and \(\gamma \in \Omega^{k+1}\),
+    On the other hand, both \(\dif \Omega^{k-1}(M)\) and \(\delta \Omega^{k+1}(M)\) are orthogonal to \(\Hcal^k(M)=(\triangle(\Omega^k(M)))^\perp\), so \(\triangle (\Omega^k(M)) = \dif \Omega^{k-1}(M) + \delta \Omega^{k+1}(M)\)
+    
+    Moreover, \(\dif\Omega^{k-1}\) and \(\delta\Omega^{k+1}\) are orthogonal to each other. Indeed, for any \(\beta \in \Omega^{k-1}\) and \(\gamma \in \Omega^{k+1}\),
     \[
         g(\dif \beta, \delta \gamma) = g(\dif^2\beta, \gamma) =0. \qedhere
     \]
@@ -55,25 +57,29 @@ Denote \(\Omega^k=\Omega^k(M)\). The Hodge theorem is about the relation between
 
 Let us denote 
 \[
-    H^k_{dR}(M) \coloneq \frac{\{\omega \in \Omega^k \colon \dif \omega = 0\}}{\{ \dif \eta \colon \eta \in \Omega^{k-1}\}}
+    H^k_{dR}(M) \coloneq \frac{\{\omega \in \Omega^k(M) \colon \dif \omega = 0\}}{\{ \dif \eta \colon \eta \in \Omega^{k-1}(M)\}}
 \]
-the de Rham cohomology groups.
+the \emph{de Rham cohomology groups} (but they are actually vector spaces, with the operation induced by \(\Omega^k(M)\)).
 
 \begin{thm}\label{thm: Hodge - de Rham}
-    The canonical map \(\Hcal^k \to H^k_{dR}(M)\) is an isomorphism. In other words, every de Rham cohomology class is represented by a unique harmonic form.
+    The quotient map induces an isomorphism 
+    \[
+        \Hcal^k(M) \xrightarrow{\sim} H^k_{dR}(M).
+    \]
+    In other words, every de Rham cohomology class is represented by a unique harmonic form.
 \end{thm}
 \begin{proof}
-    Let's prove that \(\Hcal^k \to H^k_{dR}(M)\) is injective. Suppose \(\omega = \dif \theta\) is harmonic. In particular, it's co-closed, that is, \(\delta \dif \theta = 0\). Then 
+    Let's prove that \(\Hcal^k(M) \to H^k_{dR}(M)\) is injective. Suppose \(\omega = \dif \theta\) is harmonic. In particular, it's co-closed, that is, \(\delta \dif \theta = 0\). Then 
     \[
         (\omega,\omega)_{L^2} = (\theta, \delta \dif \theta)_{L^2}=0,
     \]
     so \(\omega = 0\).
 
-    Now let's prove that \(\Hcal^k \to H^k_{dR}(M)\) is surjective. Fix a class \([\omega] \in H^k_{dR}(M)\) and write 
+    Now let's prove that \(\Hcal^k(M) \to H^k_{dR}(M)\) is surjective. Fix a class \([\omega] \in H^k_{dR}(M)\) and write 
     \[
         \omega = \alpha + \dif \beta + \delta \gamma
     \]
-    with \(\alpha \in \Hcal^k\). Since \(0=\dif \omega = \dif \delta \gamma\),
+    with \(\alpha \in \Hcal^k(M)\). Since \(0=\dif \omega = \dif \delta \gamma\),
     \[
         (\delta \gamma, \delta \gamma)_{L^2} = (\gamma, \dif \delta \gamma)_{L^2}=0,
     \]
@@ -84,7 +90,7 @@ the de Rham cohomology groups.
     If \((M,g)\) has non negative Ricci curvature, then every harmonic 1-form is parallel.
 \end{prop}
 \begin{proof}
-    For every \(\omega \in \Hcal^1\), by Lemma~\ref{lemma: Weitzenbock identity} and the computation in Remark~\ref{rmk: Weitzenbock curvature operator on 1-form},
+    For every \(\omega \in \Hcal^1(M)\), by Lemma~\ref{lemma: Weitzenbock identity} and the computation in Remark~\ref{rmk: Weitzenbock curvature operator on 1-form},
     \[
         0 = g(\triangle \omega, \omega) = g(\nabla^*\nabla \omega, \omega) + \Ric(\omega^\sharp,\omega^\sharp).
     \]
@@ -98,21 +104,21 @@ the de Rham cohomology groups.
     If \(\Ric\ge 0\) and it is positive at one point, then \(b_1(M)=0\).
 \end{cor}
 \begin{proof}
-    Suppose by contradiction that \(b_1(M)>0\), so by Theorem~\ref{thm: Hodge - de Rham} there is a non trivial harmonic 1-form \(\omega \in \Hcal^1\). By Proposition~\ref{prop: Bochner}, \(\omega\) is parallel, so \(\omega|_p \ne 0 \) for every \(p \in M\). By the computation in the proof of Proposition~\ref{prop: Bochner},    
+    Let \(\omega \in \Hcal^1(M)\). By Proposition~\ref{prop: Bochner}, \(\omega\) is parallel. But with the same computation made in the proof of Proposition~\ref{prop: Bochner},    
     \[
-        0 = \int_M g(\nabla \omega, \nabla \omega) + \int_M\Ric(\omega^\sharp,\omega^\sharp) > 0,
+        0 = \int_M g(\nabla \omega, \nabla \omega) + \int_M\Ric(\omega^\sharp,\omega^\sharp) \ge 0,
     \]
-    a contradiction.
+    so \(\Ric(\omega,\omega) \equiv 0\). In particular, \(\omega^\sharp|_p=0\), and since \(\omega\) is parallel, \(\omega = 0\).
 \end{proof}
 
 \begin{cor}
     If \(\Ric = 0\), then \(b_1(M)=\dim H^1_{dR}(M)\le n\), with equality if and only if \((M,g)\) is a flat torus.
 \end{cor}
 \begin{proof}
-    Since \(\Ric \ge 0\), by Proposition~\ref{prop: Bochner} every harmonic 1-form is parallel, so the evaluation \(\Hcal^1 \to T_p^*M \) is an injective linear homomorphism. In particular, by Theorem~\ref{thm: Hodge - de Rham},
+    Since \(\Ric \ge 0\), by Proposition~\ref{prop: Bochner} every harmonic 1-form is parallel, so the evaluation \(\Hcal^1(M) \to T_p^*M \) is an injective linear homomorphism. In particular, by Theorem~\ref{thm: Hodge - de Rham},
     \[
         b_1(M) = \dim \Hcal^1 \le n.
     \]
     
-    If equality holds, then a basis of \(\Hcal^1\) whose evaluation at a point gives an orthonormal frame gives rise to a global parallel orthonormal frame \(\{\omega_1,\dots,\omega_n\}\) of \(T^*M\). This implies that \((M,g)\) is flat. Then, the universal cover is \(\widetilde{M}= \R^n\) with flat metric. Pulling back the orthonormal frame given by \(e_i = (\omega^i)^\sharp\) to \(\widetilde{M}=\R^n\), the frame \(\{\widetilde{e}_1,\dots, \widetilde{e}_n\}\) remains parallel, hence the \(\widetilde{e}_i\)'s are the usual cartesian coordinate vector fields. Moreover, they are invariant under the action of \(\pi_1(M)\) on \(\R^n\), which means that \(\pi_1(M)\) acts by translations. Since \(\pi_1(M)\) is finitely generated, \(\pi_1(M) = \Z^m\) for some \(m\). Since the quotient \(M=\R^n/\pi_1(M)\) is compact and the action is free, it must be \(m=n\), so \(M\) is a torus.
+    If equality holds, then a basis of \(\Hcal^1(M)\) whose evaluation at a point gives an orthonormal frame gives rise to a global parallel orthonormal frame \(\{\omega_1,\dots,\omega_n\}\) of \(T^*M\). This implies that \((M,g)\) is flat. Then, the universal cover is \(\widetilde{M}= \R^n\) with flat metric. Pulling back the orthonormal frame given by \(e_i = (\omega^i)^\sharp\) to \(\widetilde{M}=\R^n\), the frame \(\{\widetilde{e}_1,\dots, \widetilde{e}_n\}\) remains parallel, hence the \(\widetilde{e}_i\)'s are the usual cartesian coordinate vector fields. Moreover, they are invariant under the action of \(\pi_1(M)\) on \(\R^n\), which means that \(\pi_1(M)\) acts by translations. Since \(\pi_1(M)\) is finitely generated, \(\pi_1(M) = \Z^m\) for some \(m\). Since the quotient \(M=\R^n/\pi_1(M)\) is compact and the action is free, it must be \(m=n\), so \(M\) is a torus.
 \end{proof}

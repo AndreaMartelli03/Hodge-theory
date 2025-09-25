@@ -1,6 +1,6 @@
 In this section, we see the analogous of the Hodge theory, but for compact manifold with boundary. For a detailed exposition, see \cite{SchwarzHodge_1995}. 
 
-Let \((M,g)\) be a compact oriented Riemannian manifold with non empty boundary \(\de M\). A possible definition of co-boundary as the \(L^2\)-adjoint of \(\dif\) would not give rise to a self-adjoint Laplacian, because boundary terms would appear. For this reason, we give the definition of co-boundary using Proposition~\ref{prop: co-boundary}:
+Let \((M,g)\) be a compact connected oriented Riemannian \(n\)-manifold with non empty boundary \(\de M\). A possible definition of co-boundary as the \(L^2\)-adjoint of \(\dif\) would not give rise to a self-adjoint Laplacian, because boundary terms would appear. For this reason, we give the definition of co-boundary using Proposition~\ref{prop: co-boundary}:
 \[
     \delta \coloneq (-1)^{kn+n+1}\star \dif \star.
 \]
@@ -71,11 +71,7 @@ Therefore, the Fredholm alternative yields the following.
     \]
     has a solution if and only if \(\theta\) is \(L^2\)-orthogonal to
     \[
-        \Hcal^k_\triangle(M) \coloneq \{ \eta \in \Omega^k(M) \colon \triangle \eta = 0, \eta|_{\de M}=0, (\delta\eta)|_{\de M}=0 \},
-    \]
-    i.e., 
-    \[
-        \int_M g(\theta, \eta) = 0 \qquad \forall \eta \in \mathcal{X} \text{ s.t. } \triangle\eta= 0.
+        \Hcal^k_\triangle(M) \coloneq \{ \eta \in \Omega^k(M) \colon \triangle \eta = 0, \eta|_{\de M}=0, (\delta\eta)|_{\de M}=0 \}.
     \]
     In that case, the solution is unique.
 \end{prop}
@@ -101,7 +97,11 @@ Consider the \emph{de Rham cohomology groups relative to the boundary}
 (by Lemma~\ref{lemma: dOmega_D subset Omega_D}, the definition is well posed).
 
 \begin{thm}\label{thm: Hodge - de Rham with Dirichlet BC}
-    The natural map \(\Hcal^k_D(M) \to H^k_{dR}(M,\de M)\) is a linear isomorphism. In other words, every de Rham cohomology class relative to the boundary is represented by a unique harmonic form satisfying the homogeneous Dirichlet boundary condition.
+    The quotient map induces an isomorphism 
+    \[
+        \Hcal^k_D(M) \xrightarrow{\sim} H^k_{dR}(M,\de M).
+    \]
+    In other words, every de Rham cohomology class relative to the boundary is represented by a unique harmonic form satisfying the homogeneous Dirichlet boundary condition.
 \end{thm}
 \begin{proof}
     Let's prove that \(\Hcal^k_D(M) \to H^k_{dR}(M,\de M)\) is injective. Suppose \(\omega = \dif \theta \in \Hcal^k_D(M)\) for some \(\theta \in \Omega^{k-1}_D(M)\). By definition, \(\omega\) is co-closed. Then, using Lemma~\ref{lem: by parts with boundary},
@@ -118,5 +118,5 @@ Consider the \emph{de Rham cohomology groups relative to the boundary}
     \[
         (\delta \alpha, \delta \alpha)_{L^2} = (\alpha, \dif \delta \alpha)_{L^2} - \int_{\de M}\delta \alpha \wedge \star \alpha =0,
     \]
-    so actually \(\omega = \theta + \dif \eta + \delta \beta\). But then \(\delta \beta \in \Hcal^k_D\), therefore \(\delta \beta = 0\). Thus, \(\omega = \theta + \dif \eta\) with \(\eta \in \Omega^{k-1}_D(M)\), i.e., \([\omega]=[\theta]\).
+    so actually \(\omega = \theta + \dif \eta + \delta \beta\). But then \(\delta \beta \in \Hcal^k_D(M)\), therefore \(\delta \beta = 0\). Thus, \(\omega = \theta + \dif \eta\) with \(\eta \in \Omega^{k-1}_D(M)\), i.e., \([\omega]=[\theta]\).
 \end{proof}
