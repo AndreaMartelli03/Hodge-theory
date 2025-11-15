@@ -46,9 +46,12 @@ Let \((M,g)\) be a compact connected oriented Riemannian \(n\)-manifold with non
 
 Denote also 
 \[
-    \Hcal^k(M) \coloneq \ker \dif|_{\Omega^k} \cap \ker \delta|_{\Omega^k}, \qquad 
-    \Hcal^k_D(M) \coloneq \Hcal^k \cap \Omega^k_D, \qquad 
-    \Hcal^k_N(M) \coloneq \Hcal^k \cap \Omega^k_N.
+    \Hcal^k(M) \coloneq \ker \dif|_{\Omega^k(M)} \cap \ker \delta|_{\Omega^k(M)},
+\]
+and 
+\[ 
+    \Hcal^k_D(M) \coloneq \Hcal^k(M) \cap \Omega^k_D(M), \qquad 
+    \Hcal^k_N(M) \coloneq \Hcal^k(M) \cap \Omega^k_N(M).
 \]
 Clearly, the Hodge star gives an isomorphism between \(\Hcal^k_D(M)\) and \(\Hcal^{n-k}_N(M)\).
 
@@ -66,9 +69,9 @@ However, by Lemma~\ref{lem: by parts with boundary}, \(\triangle\) is self-adjoi
 Therefore, the Fredholm alternative yields the following.
 \begin{prop}\label{prop: fredholm}
     For any \(\theta \in \Omega^k(M)\), the problem 
-    \[  
-        \triangle \omega = \theta, \qquad \omega|_{\de M} = 0, \ (\delta \omega)|_{\de M} = 0
-    \]
+    \begin{equation}\label{eq: BV pbm}
+        \triangle \omega = \theta, \qquad \omega|_{\de M} = 0, \ (\delta \omega)|_{\de M} = 0        
+    \end{equation}
     has a solution if and only if \(\theta\) is \(L^2\)-orthogonal to
     \[
         \Hcal^k_\triangle(M) \coloneq \{ \eta \in \Omega^k(M) \colon \triangle \eta = 0, \eta|_{\de M}=0, (\delta\eta)|_{\de M}=0 \}.
@@ -76,7 +79,7 @@ Therefore, the Fredholm alternative yields the following.
     In that case, the solution is unique.
 \end{prop}
 \begin{rmk}
-    Observe that \(\Hcal^k_D(M) \subset \Hcal^k_\triangle(M)\).
+    Observe that \(\Hcal^k_D(M) \subset \Hcal^k_\triangle(M)\). Thus a necessary condition for the existence of a solution of the problem \eqref{eq: BV pbm} is that \(\theta \in \Hcal^k_D(M)^\perp\).
 \end{rmk}
 
 It holds the analogous result of Theorem~\ref{thm: Hodge} (see \cite[Theorem~2.2.2, Theorem~2.2.7, Theorem~2.4.2, Theorem~2.4.8, Corollary~2.4.9]{SchwarzHodge_1995}).
