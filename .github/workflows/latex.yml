@@ -18,14 +18,16 @@ jobs:
         with:
           root_file: main.tex
 
+      - name: Create deployment directory
+        run: mkdir -p deployment
+
+      - name: Copy PDF to deployment directory
+        run: cp main.pdf deployment/ || cp *.pdf deployment/
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./
+          publish_dir: ./deployment
           publish_branch: gh-pages
-          destination_dir: .
           force_orphan: true
-          keep_files: false
-          cname: ""
-          commit_message: "Deploy compiled PDF"
