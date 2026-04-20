@@ -67,7 +67,7 @@ Combining these two identifications, we can give the following definition.
     \]
     To prove point \((b)\), by linearity, it's enough to prove it for elements of the form \(\dif x^{i_1} \wedge \cdots \wedge \dif x^{i_k}\). So let \(\{i_1,\dots,i_k,j_1,\dots,j_{n-k}\} = \{1,\dots,n\}\) with \(i_1 < \dots < i_k\) and \(j_1 < \dots < j_{n-k}\). Then
     \[
-        \star (\dif x^{i_1} \wedge \cdots \wedge \dif x^{i_k}) = \frac{\sigma(i_1 \dots i_k j_1 \dots j_{n-k})}{\sqrt{\det(g_{ij})}}\dif x^{j_1} \wedge \cdots \wedge \dif x^{j_k}
+        \star (\dif x^{i_1} \wedge \cdots \wedge \dif x^{i_k}) = \sqrt{\det(g_{ij})}\sigma(i_1 \dots i_k j_1 \dots j_{n-k})\dif x^{j_1} \wedge \cdots \wedge \dif x^{j_k}
     \]
     where
     \[
@@ -76,7 +76,10 @@ Combining these two identifications, we can give the following definition.
     is the sign of the corresponding permutation.
     Thus,
     \[
-        \star \star (\dif x^{i_1} \wedge \cdots \wedge \dif x^{i_k}) =  \frac{(-1)^{1+\cdots+n-(1+\cdots+k) - (1 +\cdots+(n-k))}}{\sqrt{\det(g_{ij})}}\dif x^{i_1} \wedge \cdots \wedge \dif x^{i_k}
+    \begin{split}
+        \star \star (\dif x^{i_1} \wedge &\cdots \wedge \dif x^{i_k}) \\
+        &= \sqrt{\det(g_{ij})}{(-1)^{1+\cdots+n-(1+\cdots+k) - (1 +\cdots+(n-k))}}\dif x^{i_1} \wedge \cdots \wedge \dif x^{i_k}.
+    \end{split}
     \]
     Then observe that
     \[        
